@@ -7,13 +7,17 @@ import DefaultTheme from "vitepress/theme-without-fonts";
 // as "pick yours" rather than as three walls of content stacked on each other. This is the plugin
 // maintained alongside VitePress itself rather than a hand-rolled component — golden rule 1.
 import { enhanceAppWithTabs } from "vitepress-plugin-tabs/client";
+
+import Layout from "./Layout.vue";
 import "./style.css";
 
-// The default theme with the console's tokens layered on top — see style.css. Nothing here extends
-// the layout; if the site ever needs slots (`home-hero-image`, `doc-after`), add a Layout wrapper
-// rather than forking the theme.
+// The default theme with the console's tokens layered on top — see style.css. `Layout` is a wrapper
+// around the default one that fills a single slot (`doc-before`, for the Copy-page control), which is
+// the documented way to add a slot without forking the theme; add further slots there rather than
+// here.
 export default {
   extends: DefaultTheme,
+  Layout,
   enhanceApp({ app }) {
     enhanceAppWithTabs(app);
   },

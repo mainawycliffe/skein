@@ -5,6 +5,8 @@ import { defineConfig } from "vitepress";
 import { withMermaid } from "vitepress-plugin-mermaid";
 import { tabsMarkdownPlugin } from "vitepress-plugin-tabs";
 
+import { llmAssetsDevPlugin, writeLlmAssets } from "./llm-assets";
+
 // The docs site. `docs/` is VitePress's default srcDir, so every markdown file here stays exactly
 // where README.md, llms.txt and scripts/generate-llms-full.mjs already point at it — the site is
 // configuration layered over the repo's docs, not a copy of them.
@@ -150,7 +152,14 @@ export default withMermaid(
     // makes esbuild pre-bundle both and emit the ESM wrapper the dev server needs.
     vite: {
       optimizeDeps: { include: ["mermaid", "dayjs"] },
+      // Serves `/llms.txt`, `/llms-full.txt` and every page's `.md` twin over the dev server, so the
+      // Copy-page control is exercised locally rather than first on Pages. See llm-assets.ts.
+      plugins: [llmAssetsDevPlugin()],
     },
+
+    // The build half of the same thing: copy the two curated bundles out of the repo root and emit a
+    // raw `.md` beside every page. Runs after the SSG output exists, so it only ever adds files.
+    buildEnd: writeLlmAssets,
 
     // `:::tabs` containers, used on the landing page so the three on-ramps are a choice rather than
     // three stacked walls of content. Client half is registered in theme/index.ts.
