@@ -60,6 +60,16 @@ features:
     linkText: Running it in production
 ---
 
+**Works with:**
+[LangGraph.js](https://docs.langchain.com/oss/javascript/langgraph/overview) · LangGraph SDK ·
+[Agent Chat UI](https://github.com/langchain-ai/agent-chat-ui) · LangGraph Studio
+
+**Fits your stack:** Express · Fastify · NestJS · Next.js · Bun · Deno · React · Vue · Svelte · Angular
+
+Bring the same agent to WhatsApp, Slack, email, GitHub, or any webhook with
+[channel integrations](./channels.md). See how it behaves in production with
+[PostHog](./observability.md#posthog), LangSmith, or OpenTelemetry.
+
 ## Your agent works on your laptop. Now what? {#start}
 
 You could wrap it in Express yourself — it's an afternoon, and then it's five categories of plumbing

@@ -1,7 +1,8 @@
 # `@skein-js/channels`
 
-Put an agent behind **anything that POSTs** — a WhatsApp number, a Slack workspace, a GitHub webhook,
-an inbound mailbox — instead of behind a browser tab.
+Bring the same agent to WhatsApp, Slack, email, GitHub, or any service that can send a webhook.
+skein-js keeps conversations connected, prevents duplicate work, resumes approvals, and delivers
+replies reliably; each integration only translates its provider's messages.
 
 Part of **[skein-js](https://github.com/skein-js/skein-js)**. Entirely optional: a deployment that
 configures no channel cannot tell this package exists.
